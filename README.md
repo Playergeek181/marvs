@@ -54,5 +54,5 @@ ros2 launch base_link_description display.launch.py
 You will see the Rviz representation of the robot, accompanied by a window with sliders. These sliders allow you to control the position of the end effector by adjusting the states of individual joints. An example of this setup is shown below.
 
 <p align="center">
-  <img src="./docs/images/Rviz.jpeg" width="750">
+  <img src="./docs/images/rviz.png" width="750">
 </p>
