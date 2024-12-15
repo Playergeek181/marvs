@@ -12,4 +12,4 @@ CONTAINERNAME=marvs_container
 
 # Container configs
 USERNAME=host
-ROSWS=ros_ws
+ROSWS=ros2_ws
