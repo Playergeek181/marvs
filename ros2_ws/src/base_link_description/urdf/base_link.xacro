@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<robot name="base_link" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find base_link_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find base_link_description)/urdf/base_link.trans" />
+<xacro:include filename="$(find base_link_description)/urdf/base_link.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.0004976205579090999 -7.689373461511777e-06 0.07803745679035101" rpy="0 0 0"/>
+    <mass value="1.7456719893441448"/>
+    <inertia ixx="0.017738" iyy="0.018431" izz="0.004328" ixy="-1e-06" iyz="-1e-06" ixz="0.000138"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb1_1">
+  <inertial>
+    <origin xyz="-0.0008462561016765521 0.06745703929290672 0.008021691278253834" rpy="0 0 0"/>
+    <mass value="0.6116307327114723"/>
+    <inertia ixx="0.000954" iyy="0.000449" izz="0.00057" ixy="1e-05" iyz="-0.000246" ixz="1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/limb1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/limb1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb2_1">
+  <inertial>
+    <origin xyz="-0.026551657771301303 0.04756294004572095 -0.016586329261140398" rpy="0 0 0"/>
+    <mass value="0.6181418386240707"/>
+    <inertia ixx="0.000266" iyy="0.000456" izz="0.000649" ixy="2.5e-05" iyz="5e-06" ixz="-2.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.085336 -0.215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/limb2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.085336 -0.215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/limb2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="limb3_1">
+  <inertial>
+    <origin xyz="-0.06835861558197834 0.07020544998637991 -0.4013032446384976" rpy="0 0 0"/>
+    <mass value="0.8796436153661537"/>
+    <inertia ixx="0.011688" iyy="0.011644" izz="0.000117" ixy="0.0" iyz="8e-05" ixz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.068447 -0.087212 -0.415" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/limb3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.068447 -0.087212 -0.415" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find base_link_description)/meshes/limb3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolucionar 1" type="revolute">
+  <origin xyz="0.0 0.0 0.215" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="limb1_1"/>
+  <axis xyz="0.0 -0.0 -1.0"/>
+  <limit upper="3.141593" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolucionar 2" type="revolute">
+  <origin xyz="0.0 0.085336 0.0" rpy="0 0 0"/>
+  <parent link="limb1_1"/>
+  <child link="limb2_1"/>
+  <axis xyz="-0.0 -0.0 -1.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Deslizador 3" type="prismatic">
+  <origin xyz="0.068447 0.001876 0.2" rpy="0 0 0"/>
+  <parent link="limb2_1"/>
+  <child link="limb3_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+  <limit upper="0.3" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+</robot>
