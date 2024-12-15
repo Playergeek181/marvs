@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Files
-WORKREPO=graspe
+WORKREPO=marvs
 TOOLSFILE=docker/config/tools.sh
 
 # Docker configs
 IMAGENAME=$WORKREPO
 IMAGETAG=humble
 DOCKERFILE=docker/Dockerfile.roshumble
-CONTAINERNAME=graspe_container
+CONTAINERNAME=marvs_container
 
 # Container configs
 USERNAME=host
