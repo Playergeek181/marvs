@@ -31,9 +31,10 @@ bash docker/scripts/run.sh
 
 ### Preparing the ROS Workspace
 
-Inside the container, the terminal will start in the `ros2_ws` directory. First, you need to build the ROS workspace by running the following command:
+Inside the container, the terminal will start in the `home` directory. First, you need to build the ROS workspace by running the following command:
 
 ```bash
+cd ros2_ws/
 colcon build
 ```
 
@@ -55,4 +56,17 @@ You will see the Rviz representation of the robot, accompanied by a window with 
 
 <p align="center">
   <img src="./docs/images/rviz.png" width="750">
+</p>
+
+### Gazebo
+
+The general launch file has the option to run the Gazebo simulation instead, which is done by passing the `gazebo:=true` tag on the launch command, as follows.
+
+```bash
+ros2 launch base_link_description gazebo.launch.py
+```
+After the launch you should visualize the robot and its joints on gazebo
+
+<p align="center">
+  <img src="./docs/images/gazebo.png" width="750">
 </p>
