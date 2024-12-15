@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# /author: João Pedro Baltieca Garcia, aka JPBG-USP
+# /author: João Aires Marsicano, aka Playergeek181
 
 # Arguments for easy future changes
-WORKREPO=graspe
+WORKREPO=marvs
 CONFIGFILE=docker/config/docker_configs.sh  # Path to the configuration file
 
 # Simples colors, other are in TOOLSFILE
